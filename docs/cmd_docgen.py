@@ -6,8 +6,8 @@ from enum import Enum, auto
 
 outpath = r"./cmdline.md"
 
-CLI_FILE_LIST = [r"src/plugins/ikev2/ikev2_cli.c",
-                 r"src/vnet/ipsec/ipsec_cli.c"]
+CLI_FILE_LIST = [r"../cli/ikev2_cli.c",
+                 r"../cli/ipsec_cli.c"]
 
 
 class CmdPart(Enum):
@@ -163,7 +163,7 @@ def clifile_handle(clifile, cli_cmd_list):
     return
 
 
-OUT_FILE = "./cmdlinehelp.md"
+OUT_FILE = "../output/cmdlinehelp.md"
 
 for cli_filename in CLI_FILE_LIST:
     cli_cmd_list = []
