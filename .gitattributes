@@ -1,0 +1,2 @@
+# Apply override to .py files to fix stats
+docs/*.py -linguist-documentation
