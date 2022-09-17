@@ -165,13 +165,18 @@ def clifile_handle(clifile, cli_cmd_list):
 
 OUT_FILE = "../output/cmdlinehelp.md"
 
-for cli_filename in CLI_FILE_LIST:
-    print(cli_filename)
-    cli_cmd_list = []
-    out_file = open(OUT_FILE, "a")
-    out_file.truncate(0)
-    with open(cli_filename) as clifile:
-        clifile_handle(clifile, cli_cmd_list)
-    for cmd in cli_cmd_list:
-        out_file.write(cmd.to_markdown())
-out_file.close()
+
+def main():
+    for cli_filename in CLI_FILE_LIST:
+        print(cli_filename)
+        cli_cmd_list = []
+        out_file = open(OUT_FILE, "a")
+        out_file.truncate(0)
+        with open(cli_filename) as clifile:
+            clifile_handle(clifile, cli_cmd_list)
+        for cmd in cli_cmd_list:
+            out_file.write(cmd.to_markdown())
+    out_file.close()
+
+
+main()
