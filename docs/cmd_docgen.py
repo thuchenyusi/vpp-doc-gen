@@ -6,8 +6,10 @@ from enum import Enum, auto
 
 outpath = r"./cmdline.md"
 
-CLI_FILE_LIST = [r"../cli/ikev2_cli.c",
-                 r"../cli/ipsec_cli.c"]
+CLI_FILE_LIST = [
+    r"../cli/ikev2_cli.c",
+    r"../cli/ipsec_cli.c",
+]
 
 
 class CmdPart(Enum):
@@ -32,7 +34,7 @@ PARA_TYPE_DICT = {
     "u32": ("32位无符号整型", "[0, 2^32)"),
     "u64": ("64位无符号整型", "[0, 2^64)"),
     "str": ("字符串", ""),
-    "enum": ("枚举", "")
+    "enum": ("枚举", ""),
 }
 
 for cli_filename in CLI_FILE_LIST:
@@ -63,7 +65,7 @@ def short_help_to_para(short_help):
         (r"<[^<>\|]*>", "必须", "TODO"),
         (r"\[[^\[\]\|]*\]", "可选", "TODO"),
         (r"<[^<>]*\|[^<>]*>", "必须", "枚举"),
-        (r"\[[^\[\]]*\|[^\[\]]*\]", "可选", "枚举")
+        (r"\[[^\[\]]*\|[^\[\]]*\]", "可选", "枚举"),
     )
     for line in short_help.split("\n"):
         for pattern, para_optional, para_type in pare_regex:
