@@ -174,4 +174,4 @@ for cli_filename in CLI_FILE_LIST:
         clifile_handle(clifile, cli_cmd_list)
     for cmd in cli_cmd_list:
         out_file.write(cmd.to_markdown())
-    out_file.close()
+out_file.close()
