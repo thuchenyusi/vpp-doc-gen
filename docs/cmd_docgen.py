@@ -1,22 +1,11 @@
 #!/usr/bin/env python3
 
-from pydoc import cli
 import re
-from enum import Enum, auto
-
-outpath = r"./cmdline.md"
 
 CLI_FILE_LIST = [
     r"../cli/ikev2_cli.c",
     r"../cli/ipsec_cli.c",
 ]
-
-
-class CmdPart(Enum):
-    CLI_PATH = auto()
-    CLI_SHORT_HELP = auto()
-    CLI_FUNCTION = auto()
-
 
 CMD_REGEX_MATCH = (
     ("path", r"\.path =([^},]*)"),
@@ -29,13 +18,6 @@ REGEX_CMD = (
     r"(?P<cmd>[^}]*)"
     r"};"
 )
-
-PARA_TYPE_DICT = {
-    "u32": ("32位无符号整型", "[0, 2^32)"),
-    "u64": ("64位无符号整型", "[0, 2^64)"),
-    "str": ("字符串", ""),
-    "enum": ("枚举", ""),
-}
 
 for cli_filename in CLI_FILE_LIST:
     with open(cli_filename) as clifile:
@@ -108,9 +90,9 @@ def cli_para_markdown(cmd):
         "| --- | --- | --- | --- | --- |\n"
     for para in cmd.para:
         md += "| " + str_to_markdown_pre(para.name) + \
-            " | "+str_to_markdown_pre(para.meaning) +\
-            " | "+str_to_markdown_pre(para.optional) +\
-            " | "+str_to_markdown_pre(para.type) +\
+            " | "+str_to_markdown_pre(para.meaning) + \
+            " | "+str_to_markdown_pre(para.optional) + \
+            " | "+str_to_markdown_pre(para.type) + \
             " | "+str_to_markdown_pre(para.range) + " |\n"
     md += "\n"
     return md
